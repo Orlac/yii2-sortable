@@ -1,6 +1,6 @@
 <?php
 
-namespace overbetting\sortable\assets;
+namespace orlac\sortable\assets;
 
 use yii\web\AssetBundle;
 

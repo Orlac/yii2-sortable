@@ -1,6 +1,6 @@
 <?php
 
-namespace overbetting\sortable;
+namespace orlac\sortable;
 
 use yii\rest\Action;
 

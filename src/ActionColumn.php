@@ -1,13 +1,13 @@
 <?php
 
-namespace overbetting\sortable;
+namespace orlac\sortable;
 
 
 use Yii;
 use yii\grid\ActionColumn as BaseActionColumn;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use overbetting\sortable\assets\SortableAsset;
+use orlac\sortable\assets\SortableAsset;
 
 class ActionColumn extends BaseActionColumn
 {
