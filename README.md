@@ -93,6 +93,11 @@ use orlac\sortable\ActionColumn;
             [
                 'class' => ActionColumn::className(),
             ],
+            [
+                'class' => ActionColumn::className(),
+                'template' => ($dataProvider->sort->getAttributeOrder('priority')) ? '{up} {down} {update} {delete}' : '{update} {delete}',
+                'order' => ($dataProvider->sort->getAttributeOrder('priority') === SORT_DESC) ? SORT_DESC : SORT_ASC,
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?>

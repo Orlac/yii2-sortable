@@ -20,6 +20,7 @@ class ActionColumn extends BaseActionColumn
         'class' => 'btn btn-default btn-xs'
     ];
 
+    public $order = SORT_ASC;
 
     public function init(){
         parent::init();
@@ -36,27 +37,35 @@ class ActionColumn extends BaseActionColumn
         
         if (!isset($this->buttons['up'])) {
             $this->buttons['up'] = function ($url, $model, $key) {
+
+                $label = ($this->order === SORT_ASC) ? 'Up' : 'Down';
+                $cls = ($this->order === SORT_ASC) ? 'glyphicon glyphicon-arrow-up' : 'glyphicon glyphicon-arrow-down';
+
                 $options = array_merge([
-                    'title' => Yii::t('sortable', 'Up'),
-                    'aria-label' => Yii::t('sortable', 'Up'),
+                    'title' => Yii::t('sortable', $label),
+                    'aria-label' => Yii::t('sortable', $label),
                     'data-method' => 'post',
                     'data-pjax' => '1',
                     'over-sortable' => '1',
                 ], $this->buttonOptions);
-                return Html::a('<span class="glyphicon glyphicon-arrow-up"></span>', $url, $options);
+                return Html::a('<span class="glyphicon glyphicon-arrow-' . $cls . '"></span>', $url, $options);
             };
         }
 
         if (!isset($this->buttons['down'])) {
             $this->buttons['down'] = function ($url, $model, $key) {
+
+                $label = ($this->order === SORT_ASC) ? 'Down' : 'Up';
+                $cls = ($this->order === SORT_ASC) ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up';
+
                 $options = array_merge([
-                    'title' => Yii::t('sortable', 'Down'),
-                    'aria-label' => Yii::t('sortable', 'Down'),
+                    'title' => Yii::t('sortable', $label),
+                    'aria-label' => Yii::t('sortable', $label),
                     'data-method' => 'post',
                     'data-pjax' => '1',
                     'over-sortable' => '1',
                 ], $this->buttonOptions);
-                return Html::a('<span class="glyphicon glyphicon-arrow-down"></span>', $url, $options);
+                return Html::a('<span class="glyphicon glyphicon-arrow-' . $cls . '"></span>', $url, $options);
             };
         }
     }
