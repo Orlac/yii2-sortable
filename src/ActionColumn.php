@@ -87,7 +87,7 @@ class ActionColumn extends BaseActionColumn
 
     protected function registerJs(){
         SortableAsset::register(Yii::$app->view);
-        Yii::$app->view->registerJs("$.fn.overSortable.bind('".$this->grid->id."')", \yii\web\View::POS_READY, 'over.sortable');
+        Yii::$app->view->registerJs("$.fn.overSortable.bind('".$this->grid->id."')", \yii\web\View::POS_READY);
     }
     
 }
