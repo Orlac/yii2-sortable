@@ -1,7 +1,13 @@
 (function ($) {
     $.fn.overSortable = function () {
         
+        if ($(this).attr('overSortable')) {
+            return;
+        }
+
         console.log('overSortable');
+
+        $(this).attr('overSortable', 1);
 
         /**
          * grid view element
@@ -44,7 +50,7 @@
 
             $(document).on('pjax:complete', function () {
                 $('#'+gridId).overSortable();
-            });            
+            });
             $('#'+gridId).overSortable();
         }
     }
