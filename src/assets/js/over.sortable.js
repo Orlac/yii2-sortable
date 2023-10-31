@@ -1,6 +1,6 @@
 (function ($) {
     $.fn.overSortable = function () {
-        
+
         if ($(this).attr('overSortable')) {
             return;
         }
@@ -15,7 +15,7 @@
          */
         var self = this;
 
-        $(this).on('click', 'a[over-sortable]', function(e){
+        $(this).on('click', 'a[over-sortable]', function (e) {
             e.preventDefault();
 
             var method = $(this).data('method') || 'get';
@@ -28,15 +28,15 @@
                 success: success,
             }).fail(error);
 
-            
+
             return false;
         })
 
-        function success(data){
+        function success(data) {
             $(self).yiiGridView('applyFilter');
         }
 
-        function error(data){
+        function error(data) {
             console.error('on sortable', data);
             alert(data);
         }
@@ -44,14 +44,14 @@
     };
 
     var grids = [];
-    $.fn.overSortable.bind = function(gridId){
-        if(grids.indexOf(gridId) < 0){
+    $.fn.overSortable.bind = function (gridId) {
+        if (grids.indexOf(gridId) < 0) {
             grids.push(gridId);
 
             $(document).on('pjax:complete', function () {
-                $('#'+gridId).overSortable();
+                $('#' + gridId).overSortable();
             });
-            $('#'+gridId).overSortable();
+            $('#' + gridId).overSortable();
         }
     }
 

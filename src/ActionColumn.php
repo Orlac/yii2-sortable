@@ -22,7 +22,8 @@ class ActionColumn extends BaseActionColumn
 
     public $order = SORT_ASC;
 
-    public function init(){
+    public function init()
+    {
         parent::init();
         if (!Yii::$app->request->isAjax) {
             $this->registerJs();
@@ -34,7 +35,7 @@ class ActionColumn extends BaseActionColumn
     {
 
         parent::initDefaultButtons();
-        
+
         if (!isset($this->buttons['up'])) {
             $this->buttons['up'] = function ($url, $model, $key) {
 
@@ -70,24 +71,26 @@ class ActionColumn extends BaseActionColumn
         }
     }
 
-    protected function renderDataCellContent($model, $key, $index){
+    protected function renderDataCellContent($model, $key, $index)
+    {
         $this->initVisibleButtons($model, $key, $index);
         $html = parent::renderDataCellContent($model, $key, $index);
         return Html::tag('div', $html, [
-                'class' => 'btn-group',
-                'role' => 'group'
-            ]);
+            'class' => 'btn-group',
+            'role' => 'group'
+        ]);
     }
 
-    protected function initVisibleButtons($model, $key, $index){
+    protected function initVisibleButtons($model, $key, $index)
+    {
         $this->visibleButtons['up'] = $model->getIsUp();
         $this->visibleButtons['down'] = $model->getIsDown();
     }
 
 
-    protected function registerJs(){
+    protected function registerJs()
+    {
         SortableAsset::register(Yii::$app->view);
-        Yii::$app->view->registerJs("$.fn.overSortable.bind('".$this->grid->id."')", \yii\web\View::POS_READY);
+        Yii::$app->view->registerJs("$.fn.overSortable.bind('" . $this->grid->id . "')", \yii\web\View::POS_READY);
     }
-    
 }
